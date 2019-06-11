@@ -4,7 +4,7 @@ import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import FetchCoinData from './../Actions/FetchCoinData'
 import CoinCard from './CoinCard'
 import Spinner from 'react-native-loading-spinner-overlay'
-import console = require('console');
+// import console = require('console');
 
 class CryptoContainer extends Component {
 
@@ -13,17 +13,19 @@ this.props.FetchCoinData()
     }
 renderCoinCards(){
 const {crypto} = this.props
-console.log(crypto)
-return crypto.data.mao((coin, index)) =>
+// console.log(crypto)
+if(crypto.data.length > 1){
+return crypto.data.map((coin, index) =>
 <CoinCard 
     key ={index}
     coin_name={coin.name}
     symbol={coin.symbol}
-    price_usd = {coin.price_usd}
-    percent_change_24h ={coin.percent_change_24h}
-    percent_change_7d = {coin.percent_change_7d}
+    price_usd = {coin.quote.USD.price}
+    percent_change_24h ={coin.quote.USD.percent_change_24h}
+    percent_change_7d = {coin.quote.USD.percent_change_7d}
 
     />
+)}
 }
 
     render() {
@@ -42,7 +44,7 @@ return crypto.data.mao((coin, index)) =>
             )
         }
         return(
-            <ScrollView contentContainerStyle={contentContainerStyle}>
+            <ScrollView contentContainerStyle={styles.contentContainerStyle}>
                 {this.renderCoinCards()}
             </ScrollView>
         )
@@ -62,4 +64,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(CryptoContainer)
+export default connect(mapStateToProps, {FetchCoinData})(CryptoContainer)

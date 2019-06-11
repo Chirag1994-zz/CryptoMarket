@@ -3,13 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import {Provider} from 'react-redux'
 
 import Store from './src/store'
-import {Header} from './src/components'
+import {Header, CryptoContainer} from './src/components'
 
 export default function App() {
   return (
     <Provider store={Store}>
 <View style={styles.container}>
   <Header/>
+  <CryptoContainer/>
 </View>
     </Provider>
   );
@@ -17,6 +18,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-      backgroundColor:"#000"
+      backgroundColor:"#fff"
   },
 })
