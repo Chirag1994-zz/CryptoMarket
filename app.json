@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Markets",
-    "slug": "markets",
+    "name": "Crypto Markets",
+    "slug": "crypto-markets",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [
@@ -25,6 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "The market which shows crypto currency data",
+    "githubUrl": "https://github.com/Chirag1994/CryptoMarket"
   }
 }
